@@ -1,31 +1,53 @@
-<?php
-/**
- * The template for displaying the footer
- *
- * Contains the closing of the #content div and all content after.
- *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
- *
- * @package recognition
- */
+	<?php
+		$footer_logo = get_field('footer_logo','option');
+		$linkedin_url = get_field('linkedin_url','option');
+		$acknowledgement_box = get_field('acknowledgement_box','option');
+		$company_info = get_field('company_info','option');
+	?>
 
-?>
-
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'recognition' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'recognition' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'recognition' ), 'recognition', '<a href="https://kimespera.com/">Kim Espera</a>' );
-				?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
+	<footer id="footer" class="footer">
+		<div class="footer-container container">
+			<div class="footer-logo">
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+					<?php echo wp_get_attachment_image($footer_logo, 'full'); ?>
+				</a>
+			</div>
+			<div class="footer-content">
+				<div class="footer-content-box">
+					<div class="footer-nav">
+						<?php
+							wp_nav_menu(array(
+								'container' => 'nav',
+								'link_after' => '<span class="link-border"></span>',
+								'menu' => 'Footer Menu',
+								'menu_id' => 'footer-menu',
+								'menu_class' => 'footer-menu'
+							));
+						?>
+					</div>
+					<div class="acknowledgement-box">
+						<?php if($linkedin_url): ?>
+							<a class="footer-linkedin" href="<?php echo $linkedin_url; ?>" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+						<?php endif; ?>
+						<div class="acknowledgement">
+							<?php echo $acknowledgement_box; ?>
+						</div>
+					</div>
+				</div>
+				<div class="footer-info">
+					<p><?php echo $company_info; ?></p>
+					<?php
+						wp_nav_menu(array(
+							'container' => 'nav',
+							'menu' => 'Policies',
+							'menu_id' => 'policies-menu',
+							'menu_class' => 'policies-menu'
+						));
+					?>
+				</div>
+			</div>
+		</div>
+	</footer>
 </div><!-- #page -->
 
 <?php wp_footer(); ?>

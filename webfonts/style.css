@@ -1,0 +1,35 @@
+@font-face {
+	font-family: 'Acumin Pro';
+	font-style: normal;
+	font-weight: normal;
+	src: local('Acumin Pro'), url('Acumin-RPro.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Acumin Pro Italic';
+	font-style: normal;
+	font-weight: normal;
+	src: local('Acumin Pro Italic'), url('Acumin-ItPro.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Acumin Pro Bold';
+	font-style: normal;
+	font-weight: normal;
+	src: local('Acumin Pro Bold'), url('Acumin-BdPro.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Acumin Pro Bold Italic';
+	font-style: normal;
+	font-weight: normal;
+	src: local('Acumin Pro Bold Italic'), url('Acumin-BdItPro.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'interbold';
+	src: url('inter-bold-webfont.woff2') format('woff2'),
+		 url('inter-bold-webfont.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
