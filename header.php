@@ -29,8 +29,21 @@
 					'container_class' => 'main-nav',
 					'menu' => 'Main Menu',
 					'menu_id' => 'main-menu',
-					'menu_class' => 'main-menu'
+					'menu_class' => 'main-menu',
 				));
 			?>
+
+			<?php
+				// wp_nav_menu([
+				// 	'theme_location' => 'primary',
+				// 	'container'      => 'nav',
+				// 	'container_id' => 'main-nav',
+				// 	'container_class' => 'main-nav',
+				// 	'container_id'   => 'main-nav',
+				// 	'container_class'=> 'main-nav',
+				// 	'menu_class'     => 'main-menu',
+				// ]);
+			?>
+
 		</div>
 	</header>

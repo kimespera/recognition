@@ -1,0 +1,60 @@
+.icontext-block {
+	padding-bottom: 80px;
+	padding-top: 60px;
+}
+
+.icontext-block.greybg {
+	background-color: var(--grey);
+}
+
+.icontext-block.charcoalbg {
+	background-color: var(--dark);
+}
+
+.icontext-block.charcoalbg * {
+	color: var(--white);
+}
+
+.icontext-block.centeralign {
+	text-align: center;
+}
+
+.icontext-block h2 {
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+.icontext-block h2 + p {
+	text-align: center;
+	margin-bottom: 60px;
+}
+
+.icon-list {
+	display: grid;
+	gap: 40px;
+}
+
+.fourcol .icon-list {
+	grid-template-columns: repeat(4, 1fr);
+}
+
+.threecol .icon-list {
+	grid-template-columns: repeat(3, 1fr);
+}
+
+.icon-item img {
+	margin-bottom: 20px;
+	transition: all ease .3s;
+}
+
+.icon-item:hover img {
+	transform: scale(1.2);
+}
+
+.icontext-block.centeralign .icon-item img {
+	margin: 0 auto 20px;
+}
+
+.icontext-block h3 {
+	margin-bottom: 10px;
+}

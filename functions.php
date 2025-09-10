@@ -140,12 +140,14 @@ add_action( 'widgets_init', 'recognition_widgets_init' );
 function recognition_scripts() {
 	wp_enqueue_style( 'recognition-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/css/all.css', array(), _S_VERSION );
+	wp_enqueue_style( 'slick', get_template_directory_uri() . '/css/slick.css', array(), _S_VERSION );
 	wp_style_add_data( 'recognition-style', 'rtl', 'replace' );
 
 	wp_enqueue_script( 'jquery' );
 	
 	wp_enqueue_script( 'recognition-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'slicknav-js', get_template_directory_uri() . '/js/jquery.slicknav.min.js', array( 'jquery' ), _S_VERSION, true );
+	wp_enqueue_script( 'slick-js', get_template_directory_uri() . '/js/slick.min.js', array( 'jquery' ), _S_VERSION, true );
 	wp_enqueue_script( 'customizer-js', get_template_directory_uri() . '/js/customizer.js', array( 'jquery' ), _S_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -181,3 +183,121 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+add_action('after_setup_theme', function () {
+	register_nav_menus([
+		'primary' => __('Primary Menu', 'mytheme'),
+	]);
+});
+
+function custom_style_formats( $init_array ) {
+	$init_array['block_formats'] = 'Paragraph=p; Heading 2=h2; Heading 3=h3; Heading 4=h4; Heading 5=h5; Heading 6=h6; Preformatted=pre';
+	return $init_array;
+}
+add_filter( 'tiny_mce_before_init', 'custom_style_formats' );
+
+function register_acf_block_types() {
+
+	// Hero Block
+	acf_register_block_type(array(
+		'name'              => 'hero',
+		'title'             => __('Hero Custom Block'),
+		'description'       => __('A custom hero block. This block is designed to be used only once per page to maintain proper SEO structure and prevent multiple H1 headings on the same page.'),
+		'category'          => 'common',
+		'icon'              => 'heading',
+		'mode'              => 'edit',
+		'render_template'   => get_template_directory() . '/template-parts/blocks/hero/hero.php',
+		'enqueue_style'     => get_template_directory_uri() . '/template-parts/blocks/hero/hero.css',
+		'supports'          => array(
+			'align'  => true,
+			'anchor' => true,
+			'mode'   => false,
+			'jsx'    => true,
+			'multiple' => false
+		),
+		'keywords'          => array('title', 'headline', 'hero'),
+	));
+
+	// Two Columns Block
+	acf_register_block_type(array(
+		'name'              => 'two-columns',
+		'title'             => __('Two Columns Custom Block'),
+		'description'       => __('A custom two columns block.'),
+		'category'          => 'common',
+		'icon'              => 'image-flip-horizontal',
+		'mode'              => 'edit',
+		'render_template'   => get_template_directory() . '/template-parts/blocks/two-columns/two-columns.php',
+		'enqueue_style'     => get_template_directory_uri() . '/template-parts/blocks/two-columns/two-columns.css',
+		'supports'          => array(
+			'align'  => true,
+			'anchor' => true,
+			'mode'   => false,
+			'jsx'    => true,
+			'multiple' => true
+		),
+		'keywords'          => array('two', 'column'),
+	));
+
+	// Logo Slider Block
+	acf_register_block_type(array(
+		'name'              => 'logo-slider',
+		'title'             => __('Logo Slider Custom Block'),
+		'description'       => __('A custom logo slider block.'),
+		'category'          => 'common',
+		'icon'              => 'ellipsis',
+		'mode'              => 'edit',
+		'render_template'   => get_template_directory() . '/template-parts/blocks/logo-slider/logo-slider.php',
+		'enqueue_style'     => get_template_directory_uri() . '/template-parts/blocks/logo-slider/logo-slider.css',
+		'supports'          => array(
+			'align'  => true,
+			'anchor' => true,
+			'mode'   => false,
+			'jsx'    => true,
+			'multiple' => true
+		),
+		'keywords'          => array('logo', 'slider', 'slide'),
+	));
+
+	// Icon and Text Block
+	acf_register_block_type(array(
+		'name'              => 'icon-text',
+		'title'             => __('Icon and Text Custom Block'),
+		'description'       => __('A custom icon and text block.'),
+		'category'          => 'common',
+		'icon'              => 'editor-aligncenter',
+		'mode'              => 'edit',
+		'render_template'   => get_template_directory() . '/template-parts/blocks/icon-text/icon-text.php',
+		'enqueue_style'     => get_template_directory_uri() . '/template-parts/blocks/icon-text/icon-text.css',
+		'supports'          => array(
+			'align'  => true,
+			'anchor' => true,
+			'mode'   => false,
+			'jsx'    => true,
+			'multiple' => true
+		),
+		'keywords'          => array('icon', 'text'),
+	));
+
+	// Image Tiles Block
+	acf_register_block_type(array(
+		'name'              => 'image-tiles',
+		'title'             => __('Image Tiles Custom Block'),
+		'description'       => __('A custom image tiles block.'),
+		'category'          => 'common',
+		'icon'              => 'images-alt',
+		'mode'              => 'edit',
+		'render_template'   => get_template_directory() . '/template-parts/blocks/image-tiles/image-tiles.php',
+		'enqueue_style'     => get_template_directory_uri() . '/template-parts/blocks/image-tiles/image-tiles.css',
+		'supports'          => array(
+			'align'  => true,
+			'anchor' => true,
+			'mode'   => false,
+			'jsx'    => true,
+			'multiple' => true
+		),
+		'keywords'          => array('icon', 'text'),
+	));
+}
+
+if ( function_exists('acf_register_block_type') ) {
+	add_action('acf/init', 'register_acf_block_types');
+}

@@ -1,0 +1,18 @@
+.logoslider-block {
+	padding-bottom: 80px;
+	padding-top: 80px;
+	text-align: center;
+}
+
+.logo-list .slick-track {
+	align-items: center;
+	display: flex;
+}
+
+.logo-item {
+	padding: 0 20px
+}
+
+.logo-item img {
+	margin: 0 auto;
+}

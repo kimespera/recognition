@@ -5,7 +5,7 @@
 		$company_info = get_field('company_info','option');
 	?>
 
-	<footer id="footer" class="footer">
+	<footer id="footer" class="footer section-block">
 		<div class="footer-container container">
 			<div class="footer-logo">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
