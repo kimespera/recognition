@@ -17,7 +17,6 @@
 <div class="<?php echo esc_attr($class_name); ?>">
 	<div class="container">
 		<h2><?php echo $heading; ?></h2>
-		<p><?php echo $subheading; ?></p>
 		<?php if( have_rows('testimonials_list') ): ?>
 			<div class="testimonials">
 				<?php while( have_rows('testimonials_list') ): the_row(); 
