@@ -1,0 +1,91 @@
+.testimonials-block {
+	background-color: var(--grey);
+	padding-bottom: 80px;
+	padding-top: 60px;
+	text-align: center;
+}
+
+.testimonials {
+	position: relative;
+}
+
+.testimonials .slick-arrow {
+	background-color: transparent;
+	border: 0;
+	cursor: pointer;
+	height: 40px;
+	font-size: 20px;
+	padding: 0;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 40px;
+}
+
+.testimonials .slick-arrow i {
+	position: relative;
+	top: 2px;
+	transition: all ease .3s;
+}
+
+.testimonials .slick-prev {
+	left: 0;
+}
+
+.testimonials .slick-prev:hover i {
+	transform: translateX(-5px);
+}
+
+.testimonials .slick-next {
+	right: 0;
+}
+
+.testimonials .slick-next:hover i {
+	transform: translateX(5px);
+}
+
+.testimonial {
+	background-color: var(--white);
+	border-radius: 10px;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
+	margin: 40px 40px 20px;
+	padding: 70px 20px 30px;
+	position: relative;
+}
+
+.testimonial::after {
+	background-color: var(--dark);
+	clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+	color: var(--white);
+	content: "\f005";
+	display: block;
+	font-family: var(--fontawesome);
+	font-weight: var(--fa-style, 900);
+	height: 64px;
+	left: 50%;
+	line-height: 64px;
+	position: absolute;
+	transform: translateX(-50%);
+	top: -32px;
+	width: 55px;
+}
+
+@media (min-width: 768px) {
+	.testimonials {
+		padding: 0 20px;
+	}
+
+	.testimonial {
+		padding: 70px 30px 30px;
+	}
+}
+
+@media (min-width: 1024px) {
+	.testimonials {
+		padding: 0 50px;
+	}
+
+	.testimonial {
+		padding: 70px 50px 30px;
+	}
+}

@@ -1,0 +1,9 @@
+.wysiwyg-box {
+	margin: 0 auto;
+	max-width: 964px;
+	padding: 120px 0 80px;
+}
+
+.wysiwyg-box a {
+	text-decoration: underline;
+}

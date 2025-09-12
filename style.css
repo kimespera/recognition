@@ -183,6 +183,12 @@ blockquote {
 	border-left: 4px solid rgba(0, 0, 0, 0.1);
 }
 
+b,
+strong {
+	font-family: var(--acuminbold);
+	font-weight: normal;
+}
+
 @media (prefers-reduced-motion: reduce) {
 	* {
 		animation-duration: 0.01ms !important;
@@ -208,6 +214,7 @@ blockquote {
 	align-items: center;
 	border-radius: 30px;
 	color: var(--white);
+	cursor: pointer;
 	display: inline-flex;
 	font-family: 'interbold';
 	font-size: 12px;
@@ -275,15 +282,11 @@ blockquote {
 	overflow: hidden;
 }
 
-.site-main {
-	position: relative;
-	z-index: 1;
-}
-
 .header {
 	background-color: var(--dark);
 	padding: 20px 0;
 	position: relative;
+	width: 100%;
 	z-index: 2;
 }
 
@@ -458,8 +461,10 @@ blockquote {
 .footer {
 	background-color: var(--dark);
 	color: #fff;
+	margin-top: auto;
 	padding-bottom: 50px;
 	padding-top: 60px;
+	width: 100%;
 }
 
 .footer-container {
@@ -549,6 +554,10 @@ blockquote {
 	text-align: center;
 }
 
+.footer-info p {
+	margin: 0;
+}
+
 .policies-menu {
 	align-items: center;
 	gap: 45px;
@@ -563,6 +572,43 @@ blockquote {
 
 .policies-menu li a:hover {
 	text-decoration: none;
+}
+
+.main-content {
+	position: relative;
+	width: 100%;
+	z-index: 1;
+}
+
+.error404 {
+	background-color: var(--grey);
+}
+
+.error404 .site {
+	display: flex;
+	flex-direction: column;
+	height: 100dvh;
+}
+
+.error404 .site .footer {
+	margin-top: auto;
+}
+
+.error-404 {
+	padding: 160px 0 120px;
+	text-align: center;
+}
+
+.error-404 h1 {
+	font-size: 85px;
+	line-height: 50px;
+	margin-bottom: 0;
+}
+
+.error-404 h2 {
+	font-size: 45px;
+	line-height: 50px;
+	margin-bottom: 40px;
 }
 
 @media (min-width: 768px) {

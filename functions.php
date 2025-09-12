@@ -146,9 +146,9 @@ function recognition_scripts() {
 	wp_enqueue_script( 'jquery' );
 	
 	wp_enqueue_script( 'recognition-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
-	wp_enqueue_script( 'slicknav-js', get_template_directory_uri() . '/js/jquery.slicknav.min.js', array( 'jquery' ), _S_VERSION, true );
-	wp_enqueue_script( 'slick-js', get_template_directory_uri() . '/js/slick.min.js', array( 'jquery' ), _S_VERSION, true );
-	wp_enqueue_script( 'customizer-js', get_template_directory_uri() . '/js/customizer.js', array( 'jquery' ), _S_VERSION, true );
+	wp_enqueue_script( 'slicknav', get_template_directory_uri() . '/js/jquery.slicknav.min.js', array( 'jquery' ), _S_VERSION, true );
+	wp_enqueue_script( 'slick', get_template_directory_uri() . '/js/slick.min.js', array( 'jquery' ), _S_VERSION, true );
+	wp_enqueue_script( 'customizer', get_template_directory_uri() . '/js/customizer.js', array( 'jquery' ), _S_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -294,7 +294,67 @@ function register_acf_block_types() {
 			'jsx'    => true,
 			'multiple' => true
 		),
-		'keywords'          => array('icon', 'text'),
+		'keywords'          => array('image', 'tiles'),
+	));
+
+	// Testimonials Block
+	acf_register_block_type(array(
+		'name'              => 'testimonials',
+		'title'             => __('Testimonials Custom Block'),
+		'description'       => __('A custom testimonials block.'),
+		'category'          => 'common',
+		'icon'              => 'format-status',
+		'mode'              => 'edit',
+		'render_template'   => get_template_directory() . '/template-parts/blocks/testimonials/testimonials.php',
+		'enqueue_style'     => get_template_directory_uri() . '/template-parts/blocks/testimonials/testimonials.css',
+		'supports'          => array(
+			'align'  => true,
+			'anchor' => true,
+			'mode'   => false,
+			'jsx'    => true,
+			'multiple' => true
+		),
+		'keywords'          => array('testimonial'),
+	));
+
+	// Form Block
+	acf_register_block_type(array(
+		'name'              => 'form',
+		'title'             => __('Form Custom Block'),
+		'description'       => __('A custom form block.'),
+		'category'          => 'common',
+		'icon'              => 'forms',
+		'mode'              => 'edit',
+		'render_template'   => get_template_directory() . '/template-parts/blocks/form/form.php',
+		'enqueue_style'     => get_template_directory_uri() . '/template-parts/blocks/form/form.css',
+		'supports'          => array(
+			'align'  => true,
+			'anchor' => true,
+			'mode'   => false,
+			'jsx'    => true,
+			'multiple' => true
+		),
+		'keywords'          => array('form'),
+	));
+
+	// WYSIWYG Block
+	acf_register_block_type(array(
+		'name'              => 'wysiwyg',
+		'title'             => __('WYSIWYG Custom Block'),
+		'description'       => __('A custom wysiwyg block.'),
+		'category'          => 'common',
+		'icon'              => 'text',
+		'mode'              => 'edit',
+		'render_template'   => get_template_directory() . '/template-parts/blocks/wysiwyg/wysiwyg.php',
+		'enqueue_style'     => get_template_directory_uri() . '/template-parts/blocks/wysiwyg/wysiwyg.css',
+		'supports'          => array(
+			'align'  => true,
+			'anchor' => true,
+			'mode'   => false,
+			'jsx'    => true,
+			'multiple' => true
+		),
+		'keywords'          => array('wysiwyg', 'text editor'),
 	));
 }
 

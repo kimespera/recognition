@@ -18,6 +18,7 @@
 <div class="<?php echo esc_attr($class_name); ?>">
 	<div class="container">
 		<h2><?php echo $heading; ?></h2>
+		<p><?php echo $subheading; ?></p>
 		<?php if( have_rows('image_tiles') ): ?>
 			<div class="image-tiles">
 				<?php while( have_rows('image_tiles') ): the_row(); 
@@ -26,7 +27,14 @@
 					$link = get_sub_field('link');
 					$button_color = get_sub_field('button_color'); ?>
 					<div class="tile-item">
-						<?php echo wp_get_attachment_image( $image, 'full' ); ?>
+						<div class="tile-img"><?php echo wp_get_attachment_image( $image, 'full' ); ?></div>
+						<h3><?php echo $title; ?></h3>
+						<?php if( $link ): 
+							$link_url = $link['url'];
+							$link_title = $link['title'];
+							$link_target = $link['target'] ? $link['target'] : '_self'; ?>
+							<a class="button <?php echo $button_color; ?>" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
+						<?php endif; ?>
 					</div>
 				<?php endwhile; ?>
 			</div>
