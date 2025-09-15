@@ -14,6 +14,7 @@
 		autoplaySpeed: 2000,
 		slidesToShow: 6,
 		slidesToScroll: 1,
+		speed: 1000,
 		responsive: [
 			{
 				breakpoint: 1024,
