@@ -1,0 +1,72 @@
+.story-block {
+	background-color: var(--dark);
+	color: #fff;
+	padding-bottom: 80px;
+	padding-top: 80px;
+	text-align: center;
+}
+
+.old-logos {
+	border-bottom: 2px solid #707070;
+	display: grid;
+	gap: 20px;
+	grid-template-columns: repeat(2, 1fr);
+	margin-bottom: 60px;
+	padding-bottom: 60px;
+	padding-top: 80px;
+	position: relative;
+}
+
+.old-logos::after,
+.old-logos::before {
+	background-color: #707070;
+	bottom: 0;
+	content: '';
+	height: 32px;
+	position: absolute;
+	width: 2px;
+}
+
+.old-logos::after {
+	left: 0;
+}
+
+.old-logos::before {
+	right: 0;
+}
+
+.old-logo-item img {
+	margin: 0 auto;
+}
+
+.new-logo {
+	position: relative;
+}
+
+.new-logo::before {
+	background-color: #707070;
+	content: '';
+	height: 32px;
+	left: 50%;
+	position: absolute;
+	top: -60px;
+	transform: translateX(-50%);
+	width: 2px;
+}
+
+.new-logo img {
+	margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+	.old-logos {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (min-width: 1024px) {
+	.old-logos {
+		gap: 50px;
+		grid-template-columns: repeat(4, 1fr);
+	}
+}

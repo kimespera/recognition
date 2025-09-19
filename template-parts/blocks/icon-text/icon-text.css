@@ -56,17 +56,17 @@
 }
 
 @media (min-width: 768px) {
-	.fourcol .icon-list {
+	.icontext-block.fourcol .icon-list {
 		grid-template-columns: repeat(2, 1fr);
 	}
 
-	.threecol .icon-list {
+	.icontext-block.threecol .icon-list {
 		grid-template-columns: repeat(3, 1fr);
 	}
 }
 
 @media (min-width: 1024px) {
-	.fourcol .icon-list {
+	.icontext-block.fourcol .icon-list {
 		grid-template-columns: repeat(4, 1fr);
 	}
 }

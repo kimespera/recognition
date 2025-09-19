@@ -1,0 +1,36 @@
+.ctabanner-block {
+	padding-bottom: 110px;
+	padding-top: 110px;
+	position: relative;
+}
+
+.triangle-gradient {
+	background-color: var(--dark);
+	clip-path: polygon(55% 0, 100% 0, 100% 100%, 0% 100%);
+	height: 100%;
+	opacity: 10%;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 70%;
+	z-index: 1;
+}
+
+.triangle-gradient + img {
+	position: absolute;
+	right: calc((100% - 1160px) / 2);
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 2;
+}
+
+.ctabanner-block .container {
+	position: relative;
+	z-index: 3;
+}
+
+.ctabanner-block h2 {
+	font-size: 45px;
+	margin-bottom: 45px;
+	max-width: 424px;
+}

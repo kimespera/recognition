@@ -1,0 +1,89 @@
+.buttons-block {
+	padding-bottom: 80px;
+	padding-top: 80px;
+}
+
+.buttons-wrap {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.buttons-block.coverimg .buttons-wrap {
+	align-items: normal;
+}
+
+.button-img {
+	margin: 0 auto 30px;
+	overflow: hidden;
+	position: relative;
+}
+
+.buttons-block.hexagonimg .button-img {
+	clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+	height: 468px;
+	width: 405px;
+}
+
+.buttons-block.hexagonimg .button-img img,
+.buttons-block.coverimg .button-img img {
+	height: 100%;
+	left: 0;
+	object-fit: cover;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+.buttons-box {
+	border-radius: 10px;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
+	padding: 40px 35px;
+	width: 100%;
+}
+
+.button-list {
+	display: grid;
+	gap: 12px;
+	grid-template-columns: 1fr;
+}
+
+.button-list a {
+	align-items: center;
+	border: 1px solid #0B072F;
+	border-radius: 5px;
+	display: flex;
+	font-family: var(--acuminbold);
+	font-size: 12px;
+	line-height: normal;
+	height: 38px;
+	padding: 0 14px;
+	transition: all ease .3s;
+}
+
+.button-list a:hover {
+	background-color: #0B072F;
+	color: #fff;
+}
+
+@media (min-width: 768px) {
+	.button-list {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (min-width: 1024px) {
+	.buttons-block.rightimg .buttons-wrap {
+		flex-direction: row-reverse;
+	}
+
+	.button-img {
+		margin: 0;
+		width: 35%;
+	}
+
+	.buttons-box {
+		width: 50%;
+	}
+}

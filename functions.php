@@ -356,8 +356,115 @@ function register_acf_block_types() {
 		),
 		'keywords'          => array('wysiwyg', 'text editor'),
 	));
+
+	// Button List Block
+	acf_register_block_type(array(
+		'name'              => 'button-list',
+		'title'             => __('Button List Custom Block'),
+		'description'       => __('A custom button list block.'),
+		'category'          => 'common',
+		'icon'              => 'button',
+		'mode'              => 'edit',
+		'render_template'   => get_template_directory() . '/template-parts/blocks/button-list/button-list.php',
+		'enqueue_style'     => get_template_directory_uri() . '/template-parts/blocks/button-list/button-list.css',
+		'supports'          => array(
+			'align'  => true,
+			'anchor' => true,
+			'mode'   => false,
+			'jsx'    => true,
+			'multiple' => true
+		),
+		'keywords'          => array('button', 'list'),
+	));
+
+	// CTA Banner
+	acf_register_block_type(array(
+		'name'              => 'cta-banner',
+		'title'             => __('CTA Banner Custom Block'),
+		'description'       => __('A custom cta banner block.'),
+		'category'          => 'common',
+		'icon'              => 'align-wide',
+		'mode'              => 'edit',
+		'render_template'   => get_template_directory() . '/template-parts/blocks/cta-banner/cta-banner.php',
+		'enqueue_style'     => get_template_directory_uri() . '/template-parts/blocks/cta-banner/cta-banner.css',
+		'supports'          => array(
+			'align'  => true,
+			'anchor' => true,
+			'mode'   => false,
+			'jsx'    => true,
+			'multiple' => true
+		),
+		'keywords'          => array('cta', 'banner'),
+	));
+
+	// Image Cards
+	acf_register_block_type(array(
+		'name'              => 'image-cards',
+		'title'             => __('Image Cards Custom Block'),
+		'description'       => __('A custom image cards block.'),
+		'category'          => 'common',
+		'icon'              => 'format-image',
+		'mode'              => 'edit',
+		'render_template'   => get_template_directory() . '/template-parts/blocks/image-cards/image-cards.php',
+		'enqueue_style'     => get_template_directory_uri() . '/template-parts/blocks/image-cards/image-cards.css',
+		'supports'          => array(
+			'align'  => true,
+			'anchor' => true,
+			'mode'   => false,
+			'jsx'    => true,
+			'multiple' => true
+		),
+		'keywords'          => array('image', 'card'),
+	));
+
+	// Story
+	acf_register_block_type(array(
+		'name'              => 'story',
+		'title'             => __('Story Custom Block'),
+		'description'       => __('A custom story block.'),
+		'category'          => 'common',
+		'icon'              => 'networking',
+		'mode'              => 'edit',
+		'render_template'   => get_template_directory() . '/template-parts/blocks/story/story.php',
+		'enqueue_style'     => get_template_directory_uri() . '/template-parts/blocks/story/story.css',
+		'supports'          => array(
+			'align'  => true,
+			'anchor' => true,
+			'mode'   => false,
+			'jsx'    => true,
+			'multiple' => true
+		),
+		'keywords'          => array('story'),
+	));
 }
 
 if ( function_exists('acf_register_block_type') ) {
 	add_action('acf/init', 'register_acf_block_types');
 }
+
+// HEAD (global)
+add_action('wp_head', function () {
+	if ( ! current_user_can('unfiltered_html') ) return;
+	$code = get_field('header_scripts', 'option');
+	if ($code) {
+		echo "\n<!-- ACF: Header Scripts -->\n{$code}\n<!-- /ACF: Header Scripts -->\n";
+	}
+}, 20);
+
+// RIGHT AFTER <body> (for GTM <noscript>, etc.)
+add_action('wp_body_open', function () {
+	if ( ! current_user_can('unfiltered_html') ) return;
+	$code = get_field('body_open_scripts', 'option');
+	if ($code) {
+		echo "\n<!-- ACF: Body Open Scripts -->\n{$code}\n<!-- /ACF: Body Open Scripts -->\n";
+	}
+}, 10);
+
+// FOOTER (global)
+add_action('wp_footer', function () {
+	if ( ! current_user_can('unfiltered_html') ) return;
+	$code = get_field('footer_scripts', 'option');
+	if ($code) {
+		echo "\n<!-- ACF: Footer Scripts -->\n{$code}\n<!-- /ACF: Footer Scripts -->\n";
+	}
+}, 20);
