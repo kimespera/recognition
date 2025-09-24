@@ -1,4 +1,16 @@
 ( function( $ ) {
+	// Sticky header
+	var header = $('#header');
+	var stickyOffset = header.offset().top;
+
+	$(window).on('scroll', function() {
+		if ($(window).scrollTop() > stickyOffset) {
+			header.addClass('sticky');
+		} else {
+			header.removeClass('sticky');
+		}
+	});
+	
 	$('#main-menu').slicknav({
 		label: '',
 		appendTo:'.header',
@@ -41,4 +53,8 @@
 		nextArrow: '<button type="button" class="slick-next slick-arrow"><i class="fa-solid fa-chevron-right"></i></button>',
 		prevArrow: '<button type="button" class="slick-prev slick-arrow"><i class="fa-solid fa-chevron-left"></i></button>'
 	});
+
+	setInterval(function(){
+		$('#mega-menu-item-32').addClass('mega-toggle-on');
+	}, 1000);
 }( jQuery ) );

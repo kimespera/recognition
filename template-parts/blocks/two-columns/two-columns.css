@@ -73,6 +73,16 @@
 	margin: 0;
 }
 
+.twocol-content ul li,
+.twocol-content ol li {
+	margin-bottom: 6px;
+}
+
+.twocol-content ul li:last-child,
+.twocol-content ol li:last-child {
+	margin-bottom: 0;
+}
+
 @media (min-width: 1024px) {
 	.twocol-img {
 		height: auto;

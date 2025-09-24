@@ -286,8 +286,36 @@ strong {
 	background-color: var(--dark);
 	padding: 20px 0;
 	position: relative;
+	transition: all ease .3s;
 	width: 100%;
 	z-index: 2;
+}
+
+.header.sticky {
+	left: 0;
+	padding: 10px 0;
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+
+.admin-bar .header.sticky {
+	top: 34px;
+}
+
+@media (min-width: 783px) {
+	.admin-bar .header.sticky {
+		top: 32px;
+	}
+}
+
+.logo img {
+	transition: all ease .3s;
+}
+
+.header.sticky .logo img {
+	height: 50px;
+	width: auto;
 }
 
 .header-container {
