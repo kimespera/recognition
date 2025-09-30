@@ -27,6 +27,7 @@
 		slidesToShow: 6,
 		slidesToScroll: 1,
 		speed: 1000,
+		pauseOnHover: false,
 		responsive: [
 			{
 				breakpoint: 1024,
@@ -54,7 +55,7 @@
 		prevArrow: '<button type="button" class="slick-prev slick-arrow"><i class="fa-solid fa-chevron-left"></i></button>'
 	});
 
-	setInterval(function(){
-		$('#mega-menu-item-32').addClass('mega-toggle-on');
-	}, 1000);
+	// setInterval(function(){
+	// 	$('#mega-menu-item-32').addClass('mega-toggle-on');
+	// }, 1000);
 }( jQuery ) );
