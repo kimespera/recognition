@@ -436,6 +436,26 @@ function register_acf_block_types() {
 		),
 		'keywords'          => array('story'),
 	));
+
+	// Resource CPT
+	acf_register_block_type(array(
+		'name'              => 'resource-cpt',
+		'title'             => __('Resource CPT Custom Block'),
+		'description'       => __('A custom resource cpt block.'),
+		'category'          => 'common',
+		'icon'              => 'pressthis',
+		'mode'              => 'edit',
+		'render_template'   => get_template_directory() . '/template-parts/blocks/resource-cpt/resource-cpt.php',
+		'enqueue_style'     => get_template_directory_uri() . '/template-parts/blocks/resource-cpt/resource-cpt.css',
+		'supports'          => array(
+			'align'  => true,
+			'anchor' => true,
+			'mode'   => false,
+			'jsx'    => true,
+			'multiple' => true
+		),
+		'keywords'          => array('resources, post, custom post'),
+	));
 }
 
 if ( function_exists('acf_register_block_type') ) {
@@ -468,3 +488,34 @@ add_action('wp_footer', function () {
 		echo "\n<!-- ACF: Footer Scripts -->\n{$code}\n<!-- /ACF: Footer Scripts -->\n";
 	}
 }, 20);
+
+// Register Custom Post Type: Resources
+function register_resource_cpt() {
+	register_post_type('resource', [
+		'label'        => 'Resources',
+		'public'       => true,
+		'has_archive'  => true, // Archive at /resources/
+		'rewrite'      => ['slug' => 'resources', 'with_front' => false],
+		'supports'     => ['title', 'editor', 'thumbnail', 'excerpt'],
+		'show_in_rest' => true,
+	]);
+}
+add_action('init', 'register_resource_cpt');
+
+// Register Custom Taxonomy: Resource Categories
+function register_resource_taxonomy() {
+	register_taxonomy('resource_category', ['resource'], [
+		'label'        => 'Resource Categories',
+		'hierarchical' => true,
+		'show_ui'      => true,
+		'show_in_rest' => true,
+	]);
+}
+add_action('init', 'register_resource_taxonomy');
+
+// Control posts per page on resource_category archives
+add_action('pre_get_posts', function ($q) {
+	if (!is_admin() && $q->is_main_query() && is_tax('resource_category')) {
+		$q->set('posts_per_page', -1); // change to your desired number
+	}
+});

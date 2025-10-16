@@ -55,6 +55,51 @@
 		prevArrow: '<button type="button" class="slick-prev slick-arrow"><i class="fa-solid fa-chevron-left"></i></button>'
 	});
 
+	const $items = $('.resource-grid__item');
+	const itemsPerLoad = 3;
+	let currentVisible = 9;
+	const threshold = 600;
+	let loading = false;
+	let debounce;
+
+	// init
+	$items.hide().slice(0, currentVisible).show();
+
+	function revealNext() {
+		if (loading) return;
+		if (currentVisible >= $items.length) {
+		// all shown; stop listening
+		$(window).off('scroll.infinite resize.infinite');
+			return;
+		}
+		loading = true;
+
+		const nextVisible = Math.min(currentVisible + itemsPerLoad, $items.length);
+		$items.slice(currentVisible, nextVisible).fadeIn(180);
+		currentVisible = nextVisible;
+
+		loading = false;
+	}
+
+	function nearBottom() {
+		return $(window).scrollTop() + $(window).height() >= $(document).height() - threshold;
+	}
+
+	function onScroll() {
+		clearTimeout(debounce);
+		debounce = setTimeout(function () {
+		if (nearBottom()) revealNext();
+		// If content still doesn't fill viewport, keep loading until it does or we run out
+		while ($(document).height() <= $(window).height() + threshold && currentVisible < $items.length) {
+			revealNext();
+		}
+		}, 80);
+	}
+
+	// bind + run once
+	$(window).on('scroll.infinite resize.infinite', onScroll);
+	onScroll(); // prime load in case page starts short
+
 	// setInterval(function(){
 	// 	$('#mega-menu-item-32').addClass('mega-toggle-on');
 	// }, 1000);
