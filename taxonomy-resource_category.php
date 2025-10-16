@@ -115,7 +115,7 @@ $cta_banner_link = get_field('cta_banner_link', 'term_' . $term->term_id);
 	<?php if($cta_banner_heading): ?>
 		<div class="section-block ctabanner-block">
 			<div class="triangle-gradient"></div>
-			<img src="<?php echo get_template_directory_uri(); ?>/images/banner-hex.png" alt="Banner Hexagons">
+			<img src="<?php echo get_template_directory_uri(); ?>/images/hex.png" alt="Banner Hexagons">
 			<div class="container">
 				<h2><?php echo $cta_banner_heading; ?></h2>
 				<?php if( $cta_banner_link ): 

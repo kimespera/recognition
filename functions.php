@@ -509,6 +509,8 @@ function register_resource_taxonomy() {
 		'hierarchical' => true,
 		'show_ui'      => true,
 		'show_in_rest' => true,
+		'show_admin_column'  => true,
+		// 'rewrite'            => ['slug' => 'resource-category'],
 	]);
 }
 add_action('init', 'register_resource_taxonomy');

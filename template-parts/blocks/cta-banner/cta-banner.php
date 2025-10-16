@@ -16,7 +16,7 @@
 
 <div class="<?php echo esc_attr($class_name); ?>">
 	<div class="triangle-gradient"></div>
-	<img src="<?php echo get_template_directory_uri(); ?>/images/banner-hex.png" alt="Banner Hexagons">
+	<img src="<?php echo get_template_directory_uri(); ?>/images/hex.png" alt="Banner Hexagons">
 	<div class="container">
 		<h2><?php echo $heading; ?></h2>
 		<?php if( $button ): 

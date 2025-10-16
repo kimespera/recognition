@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <div class="section-block hero-block">
-	<img src="<?php echo get_template_directory_uri(); ?>/images/single-hero.jpg" alt="Banner Hexagons">
+	<img src="<?php echo get_template_directory_uri(); ?>/images/single-banner.jpg" alt="Banner Hexagons">
 	<div class="container hero-box">
 		<div class="resource-date"><?php echo esc_html(get_the_date('F j, Y')); ?></div>
 		<h1><?php the_title(); ?></h1>
@@ -126,7 +126,7 @@
 	if($cta_banner_heading): ?>
 	<div class="section-block ctabanner-block">
 		<div class="triangle-gradient"></div>
-		<img src="<?php echo get_template_directory_uri(); ?>/images/banner-hex.png" alt="Banner Hexagons">
+		<img src="<?php echo get_template_directory_uri(); ?>/images/hex.png" alt="Banner Hexagons">
 		<div class="container">
 			<h2><?php echo $cta_banner_heading; ?></h2>
 			<?php if( $cta_banner_link ): 

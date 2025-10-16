@@ -73,6 +73,11 @@
 	margin: 0;
 }
 
+.twocol-content a:not(.button) {
+	color: var(--red);
+	font-family: var(--acuminbold);
+}
+
 .twocol-content ul li,
 .twocol-content ol li {
 	margin-bottom: 6px;
