@@ -76,8 +76,8 @@
 							</div>
 
 							<div class="resource-section__footer">
-								<a class="resource-view-all" href="<?php echo esc_url(get_term_link($cat)); ?>">
-									Read all <?php echo esc_html(strtolower($cat->name)); ?> →
+								<a class="resource-view-all button red" href="<?php echo esc_url(get_term_link($cat)); ?>">
+									Read all <?php echo esc_html(strtolower($cat->name)); ?>
 								</a>
 							</div>
 						<?php else : ?>

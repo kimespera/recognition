@@ -138,7 +138,8 @@ add_action( 'widgets_init', 'recognition_widgets_init' );
  * Enqueue scripts and styles.
  */
 function recognition_scripts() {
-	wp_enqueue_style( 'recognition-style', get_stylesheet_uri(), array(), _S_VERSION );
+	// wp_enqueue_style( 'recognition-style', get_stylesheet_uri(), array(), _S_VERSION );
+	wp_enqueue_style( 'recognition-style', get_stylesheet_uri(), array(), filemtime( get_stylesheet_directory() . '/style.css' ) );
 	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/css/all.css', array(), _S_VERSION );
 	wp_enqueue_style( 'slick', get_template_directory_uri() . '/css/slick.css', array(), _S_VERSION );
 	wp_style_add_data( 'recognition-style', 'rtl', 'replace' );
@@ -441,12 +442,32 @@ function register_acf_block_types() {
 	acf_register_block_type(array(
 		'name'              => 'resource-cpt',
 		'title'             => __('Resource CPT Custom Block'),
-		'description'       => __('A custom resource cpt block.'),
+		'description'       => __('Displays all “Resources” posts organized by category and highlights the three most recent posts.'),
 		'category'          => 'common',
 		'icon'              => 'pressthis',
 		'mode'              => 'edit',
 		'render_template'   => get_template_directory() . '/template-parts/blocks/resource-cpt/resource-cpt.php',
 		'enqueue_style'     => get_template_directory_uri() . '/template-parts/blocks/resource-cpt/resource-cpt.css',
+		'supports'          => array(
+			'align'  => true,
+			'anchor' => true,
+			'mode'   => false,
+			'jsx'    => true,
+			'multiple' => true
+		),
+		'keywords'          => array('resources, post, custom post'),
+	));
+
+	// Custom Post
+	acf_register_block_type(array(
+		'name'              => 'custom-post',
+		'title'             => __('Custom Post Block'),
+		'description'       => __('Retrieve a custom post up to 3 items.'),
+		'category'          => 'common',
+		'icon'              => 'pressthis',
+		'mode'              => 'edit',
+		'render_template'   => get_template_directory() . '/template-parts/blocks/custom-post/custom-post.php',
+		'enqueue_style'     => get_template_directory_uri() . '/template-parts/blocks/custom-post/custom-post.css',
 		'supports'          => array(
 			'align'  => true,
 			'anchor' => true,

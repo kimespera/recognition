@@ -74,8 +74,7 @@
 }
 
 .twocol-content a:not(.button) {
-	color: var(--red);
-	font-family: var(--acuminbold);
+	text-decoration: underline;
 }
 
 .twocol-content ul li,

@@ -1,0 +1,12 @@
+.custompost-block {
+	background-color: var(--grey);
+	padding: 60px 0 90px;
+}
+
+.custompost-block h2 {
+	text-align: center;
+}
+
+.custompost-block .resource-grid {
+	margin: 0;
+}
